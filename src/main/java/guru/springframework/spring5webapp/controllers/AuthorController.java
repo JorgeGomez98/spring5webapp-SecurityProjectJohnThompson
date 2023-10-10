@@ -26,13 +26,13 @@ public class AuthorController {
         model.addAttribute("authors", authorRepository.findAll());
         return "authors/list";
     }
-
+    
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/authors/new")
     public String readdata(Model model){
         model.addAttribute("authors", authorRepository.findAll());
         return "authors/list";
     }
-    
     
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/authors/new/{nombre}/{apellido}")
